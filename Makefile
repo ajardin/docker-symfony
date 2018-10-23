@@ -9,7 +9,7 @@ export COMPOSE_PROJECT_NAME := symfony
 
 # Create configuration files needed by the environment
 SETUP_ENV := $(shell (test -f $(SELF_DIR).env || cp $(SELF_DIR).env.dist $(SELF_DIR).env))
-SETUP_SERVER := $(shell (test -f $(SELF_DIR)nginx/servers/custom.conf || touch $(SELF_DIR)nginx/servers/custom.conf))
+SETUP_SERVER := $(shell (test -f $(SELF_DIR)nginx/conf.d/custom.conf || touch $(SELF_DIR)nginx/conf.d/custom.conf))
 
 # Extract environment variables needed by the environment
 export DOCKER_PHP_IMAGE := $(shell grep DOCKER_PHP_IMAGE $(SELF_DIR).env | awk -F '=' '{print $$NF}')
