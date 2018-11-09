@@ -10,4 +10,3 @@ RUN \
     apk del .build-deps
 
 WORKDIR /var/www/html/
-COPY conf.d/symfony.conf.sample /etc/nginx/conf.d/symfony.conf.sample

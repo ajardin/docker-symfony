@@ -15,8 +15,7 @@ services:
     volumes:
       - ${DOCKER_MOUNT_POINT}:/var/www/html:rw,delegated
       # Custom configuration
-      - ./nginx/conf.d/symfony.conf:/etc/nginx/conf.d/symfony.conf:ro
-      - ./nginx/conf.d/custom.conf:/etc/nginx/conf.d/custom.conf:ro
+      - ./nginx/conf.d/custom.conf:/etc/nginx/conf.d/symfony.conf:ro
     depends_on:
       - php
     tty: true
