@@ -28,8 +28,8 @@ services:
     volumes:
       - ${DOCKER_MOUNT_POINT}:/var/www/html:rw,delegated
       # Avoid heavy I/O workloads on bind-mounted volumes
-      - app_cache:/var/www/html/var/cache
-      - app_logs:/var/www/html/var/log
+      - /var/www/html/var/cache
+      - /var/www/html/var/log
       # Custom configuration
       - ./php/conf.d/custom.ini:/usr/local/etc/php/conf.d/custom.ini:ro
       # SSH keys
@@ -46,6 +46,4 @@ services:
     tty: true
 
 volumes:
-  app_cache: {}
-  app_logs: {}
   postgres: {}
