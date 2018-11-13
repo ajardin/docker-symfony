@@ -4,8 +4,11 @@ LABEL maintainer="Alexandre Jardin <info@ajardin.fr>"
 # Install Symfony requirements
 RUN \
     apk add --no-cache --virtual .persistent-deps \
+        freetype-dev \
         git \
         icu-libs \
+        libjpeg-turbo-dev \
+        libpng-dev \
         postgresql-libs \
         yarn \
         zlib-dev && \
@@ -13,8 +16,10 @@ RUN \
         $PHPIZE_DEPS \
         icu-dev \
         postgresql-dev && \
+    docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
     docker-php-ext-install \
         intl \
+        gd \
         opcache \
         pdo_pgsql \
         zip && \
