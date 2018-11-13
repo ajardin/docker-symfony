@@ -31,8 +31,7 @@ build: ## Build the environment
 	docker-compose build
 
 cache: ## Flush cache stored in Redis
-	docker-compose exec redis sh -c "redis-cli -n 1 FLUSHDB"
-	docker-compose exec redis sh -c "redis-cli -n 2 FLUSHDB"
+	$(PHP_SERVICE) "bin/console cache:clear"
 
 composer: ## Install Composer dependencies from the "php" container
 	$(PHP_SERVICE) "composer install --optimize-autoloader --prefer-dist --working-dir=$(PROJECT_PATH)"
