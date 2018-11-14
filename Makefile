@@ -21,9 +21,9 @@ export DOCKER_MOUNT_POINT := $(shell grep DOCKER_MOUNT_POINT $(SELF_DIR).env | a
 ## ----------------------------------------------------------------------------
 ##
 
-backup: ## Backup the "postgresql" volume
+backup: ## Backup the "postgres" volume
 	docker run --rm \
-		--volumes-from $$(docker-compose ps -q postgresql) \
+		--volumes-from $$(docker-compose ps -q postgres) \
 		-v $$(pwd):/backup \
 		busybox sh -c "tar cvf /backup/backup.tar /var/lib/postgresql/data"
 
@@ -51,12 +51,12 @@ php: ## Open a terminal in the "php" container
 ps: ## List all containers managed by the environment
 	docker-compose ps
 
-restore: ## Restore the "postgresql" volume
+restore: ## Restore the "postgres" volume
 	docker run --rm \
-		--volumes-from $$(docker-compose ps -q postgresql) \
+		--volumes-from $$(docker-compose ps -q postgres) \
 		-v $$(pwd):/backup \
 		busybox sh -c "tar xvf /backup/backup.tar /var/lib/postgresql/data"
-	docker-compose restart mysql
+	docker-compose restart postgres
 
 start: ## Start the environment
 	docker-compose build
