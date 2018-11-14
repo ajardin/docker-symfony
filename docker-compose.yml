@@ -7,6 +7,14 @@ services:
     depends_on:
       - php
 
+  maildev:
+    image: djfarrelly/maildev:latest
+    env_file: .env
+    depends_on:
+      - php
+    ports:
+      - 1080:80
+
   nginx:
     build: nginx
     env_file: .env

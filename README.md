@@ -10,6 +10,7 @@ application. Thus, some services or configurations are not suitables for a produ
 
 ## Services
 * `blackfire`: [blackfire/blackfire:latest](https://hub.docker.com/r/blackfire/blackfire/) image (application profiling).
+* `maildev`: [djfarrelly/maildev:latest](https://hub.docker.com/r/djfarrelly/maildev/) (emails testing).
 * `nginx`: [nginx:1.15-alpine](nginx/Dockerfile) custom image with HTTPS (web server).
 * `php`: [php:7.2-fpm-alpine](php/Dockerfile) custom image with additional extensions and Composer.
 * `postgres`: [postgres:10-alpine](https://hub.docker.com/_/postgres/) image (database).

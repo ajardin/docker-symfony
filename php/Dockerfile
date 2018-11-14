@@ -10,6 +10,7 @@ RUN \
         libjpeg-turbo-dev \
         libpng-dev \
         postgresql-libs \
+        ssmtp \
         yarn \
         zlib-dev && \
     apk add --no-cache --virtual .build-deps \
@@ -23,6 +24,7 @@ RUN \
         opcache \
         pdo_pgsql \
         zip && \
+    perl -pi -e "s/mailhub=mail/mailhub=maildev/" /etc/ssmtp/ssmtp.conf && \
     apk del .build-deps
 
 # Install Composer globally
