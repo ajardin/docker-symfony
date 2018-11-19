@@ -30,7 +30,7 @@ backup: ## Backup the "postgres" volume
 build: ## Build the environment
 	docker-compose build
 
-cache: ## Flush cache stored in Redis
+cache: ## Flush the Symfony cache
 	$(PHP_SERVICE) "bin/console cache:clear"
 
 composer: ## Install Composer dependencies from the "php" container
@@ -68,7 +68,7 @@ stats: ## Print real-time statistics about containers ressources usage
 stop: ## Stop the environment
 	docker-compose stop
 
-yarn: ## Install Composer dependencies from the "php" container
+yarn: ## Install npm dependencies from the "php" container
 	$(PHP_SERVICE) "yarn install --cwd=$(PROJECT_PATH)"
 
 .PHONY: backup build cache composer logs logs-full nginx php ps restore start stats stop yarn
