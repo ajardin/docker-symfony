@@ -3,7 +3,7 @@ LABEL maintainer="Alexandre Jardin <info@ajardin.fr>"
 
 # Install Symfony requirements
 RUN \
-    apk add --no-cache --virtual .persistent-deps \
+    apk add --no-cache \
         freetype-dev \
         git \
         icu-libs \
